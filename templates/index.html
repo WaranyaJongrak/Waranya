@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>💐 ร้านดอกไม้</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      font-family: 'Kanit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .chat-container {
+      background: white;
+      max-width: 600px;
+      width: 100%;
+      border-radius: 25px;
+      box-shadow: 0 12px 25px rgba(255, 105, 180, 0.3);
+      padding: 40px 35px 50px;
+    }
+    .title {
+      text-align: center;
+      color: #d81b60;
+      font-weight: 800;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    .title::before {
+      content: "\f3f5";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      left: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #f48fb1;
+      font-size: 2rem;
+    }
+    .title::after {
+      content: "\f3f5";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #f48fb1;
+      font-size: 2rem;
+    }
+    form {
+      margin-top: 30px;
+    }
+    label {
+      font-weight: 600;
+      color: #880e4f;
+      font-size: 1.1rem;
+    }
+    textarea {
+      border: 2px solid #f48fb1;
+      border-radius: 15px;
+      padding: 15px;
+      font-size: 1.1rem;
+      resize: none;
+      transition: border-color 0.3s ease;
+    }
+    textarea:focus {
+      border-color: #d81b60;
+      outline: none;
+      box-shadow: 0 0 10px rgba(216, 27, 96, 0.4);
+    }
+    button.btn-flower {
+      margin-top: 20px;
+      width: 100%;
+      background: #d81b60;
+      border: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      padding: 12px;
+      border-radius: 15px;
+      color: white;
+      box-shadow: 0 8px 15px rgba(216, 27, 96, 0.4);
+      transition: background 0.3s ease;
+    }
+    button.btn-flower:hover {
+      background: #b01449;
+    }
+    .chat-bubble {
+      background: #fce4ec;
+      color: #880e4f;
+      margin-top: 30px;
+      padding: 20px 25px;
+      border-radius: 20px;
+      font-size: 1.15rem;
+      white-space: pre-line;
+      box-shadow: 0 4px 10px rgba(216, 27, 96, 0.2);
+      position: relative;
+    }
+    .chat-bubble::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: -15px;
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-right: 15px solid #fce4ec;
+      border-bottom: 15px solid transparent;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="title">💐 BlossomBot</div>
+    <form method="post" novalidate>
+      <label for="prompt">🌸 สวัสดีค่ะ! คุณกำลังคุยกับ BlossomBot ยินดีให้คำปรึกษาเรื่องดอกไม้ทุกชนิดนะคะ 😊</label>
+      <textarea name="prompt" id="prompt" rows="4" placeholder="ตัวอย่าง: แนะนำดอกไม้สำหรับวันแม่..." required></textarea>
+      <button type="submit" class="btn-flower">ถามคำถาม</button>
+    </form>
+
+    {% if result %}
+    <div class="chat-bubble" role="alert" aria-live="polite">
+      <strong>💬 คำตอบจาก BlossomBot:</strong><br />
+      {{ result }}
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
